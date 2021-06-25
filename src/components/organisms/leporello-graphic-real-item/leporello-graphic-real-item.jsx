@@ -27,7 +27,9 @@ export default ({
 
   const title = (graphic.titles[0] && graphic.titles[0].title) || '';
   const location = (graphic.locations[0] && graphic.locations[0].term) || '';
-  const condition = `${graphic.classification.classification}; ${graphic.classification.condition}`;
+  const condition = graphic.classification.condition
+    ? `${graphic.classification.classification}; ${graphic.classification.condition}`
+    : graphic.classification.classification;
 
   const {
     dating,
