@@ -1,0 +1,27 @@
+@import "~/styles/000-abstracts/__abstracts-dir";
+.grouped-definition-list {
+  width: 100%;
+  margin-top: 0;
+  padding-bottom: $s;
+  margin-bottom: $l;
+  border-bottom: solid $border-stroke-weight-s $darken-medium;
+  line-height: $lh-normal;
+  &__term {
+    font-weight: $fw-regular;;
+    padding: $s 0 $xxs 0;
+    &::after {
+      content: ":"
+    }
+  }
+  &__definition {
+    display: flex;
+    margin: 0;
+  }
+  &__term+&-definition:not(:nth-child(2)),
+  &__term:first-child+&__definition:nth-child(2) {
+  }
+
+  & + .grouped-definition-list{
+    margin-top: -$l;
+  }
+}

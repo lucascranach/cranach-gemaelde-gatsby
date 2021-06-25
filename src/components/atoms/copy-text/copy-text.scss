@@ -1,0 +1,10 @@
+@import "~/styles/000-abstracts/__abstracts-dir";
+
+.copy-text {
+  margin-bottom: $s;
+
+  p{
+    margin-bottom: $xs;
+    hyphens: auto;
+  }
+}

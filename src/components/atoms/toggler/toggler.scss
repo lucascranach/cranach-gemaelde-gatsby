@@ -1,0 +1,55 @@
+@import '~/styles/000-abstracts/__abstracts-dir';
+
+.toggler {
+
+  $self: &;
+
+  $toggler-background-color: $accent;
+  $toggler-color: $darkest;
+  $toggler-size: $l;
+  $toggler-font-size: $l;
+
+
+  z-index: $level-section-nav;
+  display: inline-block;
+
+  width: $toggler-size;
+  height: $toggler-size;
+
+  cursor: pointer;
+
+  color: $toggler-color;
+  border: 0;
+  border-radius: 100%;
+  background-color: $toggler-background-color;
+  box-shadow: $shadow;
+
+  & .icon-holder{
+
+    display: flex;
+    justify-items: center;
+    align-items: center;
+
+    & > i{
+      font-size: $toggler-font-size;
+      transition: $tr-fast all;
+    }
+  }
+
+  &--small{
+    width: $m;
+    height: $m;
+
+    & .icon-holder > i{
+      font-size: $m;
+    }
+  }
+
+  &--toggled{
+    background-color: $toggler-color;
+    color: $toggler-background-color;
+    & .icon-holder > i{
+      transform: rotate(180deg);
+    }
+  }
+}

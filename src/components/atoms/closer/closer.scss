@@ -1,0 +1,25 @@
+@import '~/styles/000-abstracts/__abstracts-dir';
+
+.closer {
+  font-size: $l;
+
+  position: relative;
+  z-index: $level-section-nav;
+
+  width: $l;
+  height: $l;
+
+  cursor: pointer;
+  transition: $tr-fast all;
+  text-align: center;
+
+  color: $accent;
+  border: 0;
+  border-radius: 100%;
+  background-color: $darkest;
+  box-shadow: $shadow;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

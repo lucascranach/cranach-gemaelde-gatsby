@@ -1,0 +1,37 @@
+@import "~/styles/000-abstracts/__abstracts-dir";
+.dynamic-table {
+  width: 100%;
+
+  & > .table {
+    width: 100%;
+
+    & > .head {
+      & > .row {
+        & > .cell {
+          text-align: left;
+          width: 50%;
+        }
+      }
+    }
+
+    & > .body {
+      & > .row {
+        border-top: solid $border-stroke-weight-s $darken;
+        & > .cell {
+          &.-center {
+            text-align: center;
+          }
+        }
+      }
+    }
+
+
+    & > .head, & > .body {
+      & > .row {
+        & > .cell {
+          padding: 0.5rem 1rem 0.5rem 0;
+        }
+      }
+    }
+  }
+}
