@@ -200,6 +200,7 @@ const pagesDataQuery = `
                 text
               }
               type
+              filenames
             }
             secondaryReferences {
               inventoryNumber

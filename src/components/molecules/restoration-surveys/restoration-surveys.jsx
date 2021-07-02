@@ -70,12 +70,16 @@ export default ({ items }) => {
       {/* Keywords */}
       { surveyKeywords(item) }
 
-      {/* Files: should be added to graphql query in gatsby-node.js and outputted here */}
-      <div className="files">
-        <div className="files__item"></div>
-        <div className="files__item"></div>
-        <div className="files__item"></div>
-      </div>
+      {/* Files */}
+      { item.filenames && (<div className="files">
+        { item.filenames.map((filename) => (<div
+            key={filename}
+            className="files__item"
+            data-filename={filename}
+          ></div>))
+
+        }
+      </div>)}
 
       { surveyHasBody(item) && itemsOpenState[itemKey]
         && <div className="survey__body">
