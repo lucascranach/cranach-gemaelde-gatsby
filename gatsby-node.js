@@ -9,40 +9,43 @@ const imageTypeStructure = `infos {
   }
 }
 images {
-  xsmall {
-    dimensions {
-      width
-      height
+  id
+  sizes{
+    xsmall {
+      dimensions {
+        width
+        height
+      }
+      src
     }
-    src
-  }
-  small {
-    dimensions {
-      width
-      height
+    small {
+      dimensions {
+        width
+        height
+      }
+      src
     }
-    src
-  }
-  medium {
-    dimensions {
-      width
-      height
+    medium {
+      dimensions {
+        width
+        height
+      }
+      src
     }
-    src
-  }
-  origin {
-    dimensions {
-      width
-      height
+    origin {
+      dimensions {
+        width
+        height
+      }
+      src
     }
-    src
-  }
-  tiles {
-    dimensions {
-      width
-      height
+    tiles {
+      dimensions {
+        width
+        height
+      }
+      src
     }
-    src
   }
 }`;
 
@@ -174,7 +177,6 @@ const pagesDataQuery = `
             relatedWorks
             repository
             restorationSurveys {
-              filenames
               involvedPersons {
                 name
                 role
@@ -200,7 +202,10 @@ const pagesDataQuery = `
                 text
               }
               type
-              filenames
+              fileReferences {
+                type
+                id
+              }
             }
             secondaryReferences {
               inventoryNumber
@@ -235,13 +240,16 @@ const getRepresentativeImageVariant = (item) => {
       },
     },
     images: [
-      ['xsmall', 'small', 'medium', 'origin', 'tiles'].reduce(
-        (acc, size) => {
-          acc[size] = { src: '', dimensions: { width: 0, height: 0 } };
-          return acc;
-        },
-        {},
-      ),
+      {
+        id: '',
+        sizes: ['xsmall', 'small', 'medium', 'origin', 'tiles'].reduce(
+          (acc, size) => {
+            acc[size] = { src: '', dimensions: { width: 0, height: 0 } };
+            return acc;
+          },
+          {},
+        ),
+      },
     ],
   };
   const imageType = (item.images && item.images.overall) || emptyImageType;

@@ -71,11 +71,11 @@ export default ({ items }) => {
       { surveyKeywords(item) }
 
       {/* Files */}
-      { item.filenames && (<div className="files">
-        { item.filenames.map((filename) => (<div
-            key={filename}
+      { item.fileReferences && (<div className="files">
+        { item.fileReferences.map((fileReference) => (<div
+            key={fileReference.id}
             className="files__item"
-            data-filename={filename}
+            style={{ backgroundImage: `url('${fileReference.src}')` }}
           ></div>))
 
         }

@@ -62,12 +62,12 @@ const Painting = {
     const images = Object.entries(item.images || {}).filter(
       (image) => !!image[1],
     ).reduce((acc, [imageType, imageTypeValue]) => {
-      imageTypeValue.images.forEach((image, index) => {
+      imageTypeValue.images.forEach((image) => {
         const imgData = {
-          variants: image,
-          thumbnail: image.small.src,
+          sizes: image.sizes,
+          thumbnail: image.sizes.small.src,
           altText: imageType,
-          id: `${item.inventoryNumber}-${imageType}-${index}`,
+          id: image.id,
         };
 
         acc.push(imgData);

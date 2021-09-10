@@ -47,13 +47,37 @@ export default ({
     exhibitionHistory,
     catalogWorkReferences,
     restorationSurveys,
+    images,
   } = graphic;
 
   const graphicViewArtefact = painting.toViewerArtefact(graphic);
 
-  const artTechExaminations = restorationSurveys.filter((rs) => rs.type === ART_TECH_EXAMINATION);
-  const conditionReports = restorationSurveys.filter((rs) => rs.type === CONDITION_REPORT);
-  const conservationReports = restorationSurveys.filter((rs) => rs.type === CONSERVATION_REPORT);
+  const imageExtendedRestorationSurveys = restorationSurveys.reduce((acc, survey) => [
+    ...acc,
+    {
+      ...survey,
+      fileReferences: survey.fileReferences.map(ref => {
+        let src = '';
+
+        if (images[ref.type]) {
+          const foundImageMatch = images[ref.type].images.find((img) => img.id === ref.id);
+
+          if (foundImageMatch) {
+            src = foundImageMatch.sizes.small.src;
+          }
+        }
+
+        return {
+          ...ref,
+          src,
+        };
+      })
+    }
+  ], []);
+
+  const artTechExaminations = imageExtendedRestorationSurveys.filter((rs) => rs.type === ART_TECH_EXAMINATION);
+  const conditionReports = imageExtendedRestorationSurveys.filter((rs) => rs.type === CONDITION_REPORT);
+  const conservationReports = imageExtendedRestorationSurveys.filter((rs) => rs.type === CONSERVATION_REPORT);
 
   return (
     <LeporelloGraphicItem
