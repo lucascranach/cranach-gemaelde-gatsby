@@ -55,11 +55,15 @@ export default ({
   const viewerRef = useRef(null);
   const [activeZoom, setActiveZoom] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [activeImage, setActiveImage] = useState(
-    artefact.images.find(
-      (image) => image.sizes.tiles.src === artefact.placeholder.sizes.tiles.src,
-    ),
-  );
+  const [activeImage, setActiveImage] = useState(artefact.images.find(
+    (image) => image.sizes.tiles.src === artefact.placeholder.sizes.tiles.src,
+  ));
+
+  useEffect(() => {
+    setActiveImage(artefact.images.find(
+      (image) => image.selected,
+    ));
+  }, [artefact]);
 
   const getTilesUrl = (tiles) => tiles.src.replace(
     imageServer.urlImages,

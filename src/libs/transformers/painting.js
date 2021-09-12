@@ -58,7 +58,7 @@ const Painting = {
     };
   },
 
-  toViewerArtefact(item) {
+  toViewerArtefact(item, selectedImageId = null) {
     const images = Object.entries(item.images || {}).filter(
       (image) => !!image[1],
     ).reduce((acc, [imageType, imageTypeValue]) => {
@@ -68,6 +68,7 @@ const Painting = {
           thumbnail: image.sizes.small.src,
           altText: imageType,
           id: image.id,
+          selected: false,
         };
 
         acc.push(imgData);
