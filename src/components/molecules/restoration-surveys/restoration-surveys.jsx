@@ -5,7 +5,7 @@ import Toggler from '~/components/atoms/toggler';
 
 import './restoration-surveys.scss';
 
-export default ({ items }) => {
+export default ({ items, fileReferenceClick = () => {} }) => {
   const [itemsOpenState, setItemsOpenState] = useState(
     items.map(() => false),
   );
@@ -76,6 +76,7 @@ export default ({ items }) => {
             key={fileReference.id}
             className="files__item"
             style={{ backgroundImage: `url('${fileReference.src}')` }}
+            onClick={ () => fileReferenceClick(fileReference.id) }
           ></div>))
 
         }

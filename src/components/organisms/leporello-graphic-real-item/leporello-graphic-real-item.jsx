@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from '~/i18n';
 
 import painting from '~/libs/transformers/painting';
@@ -50,7 +50,11 @@ export default ({
     images,
   } = graphic;
 
-  const graphicViewArtefact = painting.toViewerArtefact(graphic);
+  const [graphicViewArtefact, setGraphicViewArtefact] = useState(painting.toViewerArtefact(graphic));
+
+  const fileReferenceClick = (fileReferenceId) => setGraphicViewArtefact(
+    painting.toViewerArtefact(graphic, fileReferenceId),
+  );
 
   const imageExtendedRestorationSurveys = restorationSurveys.reduce((acc, survey) => [
     ...acc,
@@ -199,7 +203,10 @@ export default ({
                 { artTechExaminations.length > 0
                   && <GroupedDefinitionList.Entry
                       term={t('Art-technological examination')}
-                      definition={<RestorationSurveys items={artTechExaminations.reverse()} />}
+                      definition={<RestorationSurveys
+                          items={artTechExaminations.reverse()}
+                          fileReferenceClick={ fileReferenceClick }
+                        />}
                     />
                 }
 
@@ -207,14 +214,20 @@ export default ({
                 { conditionReports.length > 0
                   && <GroupedDefinitionList.Entry
                     term={t('Condition')}
-                    definition={<RestorationSurveys items={conditionReports.reverse()} />}
+                    definition={<RestorationSurveys
+                        items={conditionReports.reverse()}
+                        fileReferenceClick={ fileReferenceClick }
+                      />}
                   />}
 
                 {/* Restaurierungsgeschichte */}
                 { conservationReports.length > 0
                   && <DefinitionList.Entry
                       term={t('Conservation')}
-                      definition={<RestorationSurveys items={conservationReports.reverse()} />}
+                      definition={<RestorationSurveys
+                          items={conservationReports.reverse()}
+                          fileReferenceClick={ fileReferenceClick }
+                        />}
                     />}
 
             </GroupedDefinitionList>
