@@ -68,7 +68,9 @@ const Painting = {
           thumbnail: image.sizes.small.src,
           altText: imageType,
           id: image.id,
-          selected: false,
+          selected: selectedImageId
+            ? image.id === selectedImageId
+            : image.id === item.representativeImage.id,
         };
 
         acc.push(imgData);
@@ -78,7 +80,7 @@ const Painting = {
     }, []);
 
     return {
-      type: 'graphics',
+      type: 'paintings',
       id: item.inventoryNumber,
       placeholder: item.representativeImage,
       images,
