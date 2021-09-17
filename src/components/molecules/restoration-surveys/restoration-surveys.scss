@@ -32,11 +32,11 @@
     &__item {
       width: $xl;
       height: $xl;
-      border: 1px solid $light;
       display: inline-block;
       margin: $xxs;
-      background-color: $lighter;
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
       cursor: pointer;
     }
   }
