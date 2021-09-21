@@ -65,7 +65,7 @@ const Painting = {
       imageTypeValue.images.forEach((image) => {
         const imgData = {
           sizes: image.sizes,
-          thumbnail: image.sizes.small.src,
+          thumbnail: (image.sizes.small && image.sizes.small.src) || '',
           altText: imageType,
           id: image.id,
           selected: selectedImageId

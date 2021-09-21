@@ -63,7 +63,7 @@ export default ({
       fileReferences: survey.fileReferences.map(ref => {
         let src = '';
 
-        if (images[ref.type]) {
+        if (images && images[ref.type]) {
           const foundImageMatch = images[ref.type].images.find((img) => img.id === ref.id);
 
           if (foundImageMatch) {
