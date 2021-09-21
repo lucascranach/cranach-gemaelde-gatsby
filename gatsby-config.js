@@ -5,7 +5,7 @@ function resolve(dir) {
 }
 
 module.exports = {
-  pathPrefix: process.env.PATH_PREFIX || '/gemaelde',
+  pathPrefix: process.env.PATH_PREFIX || '/paintings',
   plugins: [
     "gatsby-plugin-sass",
     "gatsby-plugin-react-helmet",
