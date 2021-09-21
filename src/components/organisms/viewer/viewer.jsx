@@ -7,19 +7,19 @@ import React, {
 import cranachCfg from '~/cranach.config';
 import './viewer.scss';
 
+import zoomInRest from './images/zoomin_rest.png';
+import zoomInHover from './images/zoomin_hover.png';
+
+import zoomOutRest from './images/zoomout_rest.png';
+import zoomOutHover from './images/zoomout_hover.png';
+
+import homeRest from './images/home_rest.png';
+import homeHover from './images/home_hover.png';
+
+import fullpageRest from './images/fullpage_rest.png';
+import fullpageHover from './images/fullpage_hover.png';
+
 const { imageServer } = cranachCfg;
-
-const zoomInRest = require('./images/zoomin_rest.png');
-const zoomInHover = require('./images/zoomin_hover.png');
-
-const zoomOutRest = require('./images/zoomout_rest.png');
-const zoomOutHover = require('./images/zoomout_hover.png');
-
-const homeRest = require('./images/home_rest.png');
-const homeHover = require('./images/home_hover.png');
-
-const fullpageRest = require('./images/fullpage_rest.png');
-const fullpageHover = require('./images/fullpage_hover.png');
 
 const navImages = {
   zoomIn: {
